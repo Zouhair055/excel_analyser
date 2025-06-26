@@ -12,20 +12,7 @@ L'Analyseur Excel est une application web qui permet d'uploader des fichiers Exc
 - Affichage des informations du fichier (nombre de lignes, colonnes)
 
 ### 🤖 Règles de Traitement
-L'application applique automatiquement ces règles :
-
-1. **Règle ADVICEPRO** : Si "ADVICEPRO" est détecté dans la colonne 'Description'
-   - `Nature` → "G- Suppliers"
-   - `Descrip` → "ADVICEPRO"
-   - `Vessel` → "N/A"
-   - `Service` → "OHD"
-
-2. **Extraction de Références** : Extraction automatique depuis 'Description'
-   - Pattern : `AE\d+` (ex: AE1602600010153)
-   - Pattern : `OFFICE \d+ \w+` (ex: OFFICE 123 PARIS)
-
-3. **Classification USD** : Si 'Bank account' contient "USD"
-   - `Nature` → "Import"
+L'application applique automatiquement les régles
 
 ### 🎨 Interface Utilisateur
 - Design moderne et responsive
@@ -101,66 +88,6 @@ excel-analyzer/
 └── README.md               # Documentation
 ```
 
-## 🧪 Tests
-
-### Tests Automatiques
-```bash
-# Test de l'API
-python test_api.py
-
-# Vérification des résultats
-python verify_results.py
-```
-
-### Tests Manuels
-1. Interface web : http://localhost:5001
-2. Upload de fichiers .xlsx et .xls
-3. Vérification des règles appliquées
-4. Téléchargement des fichiers traités
-
-## 📈 Résultats de Test
-
-✅ **Tests Réussis** :
-- Upload de fichier Excel
-- Application des 3 règles de traitement
-- Extraction correcte des références
-- Téléchargement du fichier traité
-- Interface utilisateur responsive
-
-## 🔧 Personnalisation
-
-### Ajouter de Nouvelles Règles
-Modifier le fichier `src/routes/excel.py`, fonction `apply_rules()` :
-
-```python
-def apply_rules(df):
-    # Vos nouvelles règles ici
-    if 'Nouvelle_Colonne' in df.columns:
-        # Logique de traitement
-        pass
-    
-    return df
-```
-
-### Modifier l'Interface
-- **HTML** : `src/static/index.html`
-- **CSS** : `src/static/style.css`
-- **JavaScript** : `src/static/script.js`
-
-## 🚀 Déploiement
-
-### Option 1 : Déploiement Local
-```bash
-python src/main.py
-```
-
-### Option 2 : Déploiement Production
-L'application est prête pour le déploiement avec des services comme :
-- Heroku
-- AWS
-- Google Cloud
-- DigitalOcean
-
 ## 📊 Formats Supportés
 - **.xlsx** (Excel 2007+)
 - **.xls** (Excel 97-2003)
@@ -179,9 +106,8 @@ Le projet est structuré pour faciliter l'ajout de nouvelles fonctionnalités :
 - Optimisations de performance
 
 ## 📝 Licence
-Développé avec ❤️ pour l'automatisation du traitement Excel.
+Développé par Zouhair.
 
 ---
 
-**Note** : Ce projet démontre une approche simple et efficace pour le traitement automatique de fichiers Excel sans nécessiter de modèles d'IA complexes. Les règles sont facilement configurables et extensibles.
 
