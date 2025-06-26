@@ -1,0 +1,37 @@
+# Environnement virtuel Python
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Fichiers temporaires
+uploads/
+processed/
+*.tmp
+*.temp
+
+# Base de données
+*.db
+*.sqlite
+*.sqlite3
+
+# Fichiers de test générés
+test_data.xlsx
+downloaded_*.xlsx
+processed_*.xlsx
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Système
+.DS_Store
+Thumbs.db

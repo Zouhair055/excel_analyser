@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyseur Excel - Remplissage Automatique</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo petit en haut à droite pour les autres sections -->
+        <div class="top-logo" id="topLogo" style="display: none;">
+            <img src="favicon.ico" alt="Logo" class="logo-small">
+        </div>
+
+        <header class="header">
+            <h1><i class="fas fa-file-excel"></i> Analyseur Excel</h1>
+            <p>Uploadez votre fichier Excel et laissez l'IA remplir automatiquement les colonnes vides</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Zone d'upload -->
+            <section class="upload-section" id="uploadSection">
+                <div class="upload-area" id="uploadArea">
+                    
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Glissez-déposez votre fichier Excel ici</h3>
+                    <p>ou <button class="browse-btn" id="browseBtn">parcourez vos fichiers</button></p>
+                    <input type="file" id="fileInput" accept=".xlsx,.xls" hidden>
+                    <div class="file-types">
+                        <small>Formats supportés: .xlsx, .xls</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Zone de progression -->
+            <section class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-card">
+                    <h3><i class="fas fa-cog fa-spin"></i> Traitement en cours...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">Analyse du fichier...</p>
+                </div>
+            </section>
+
+            <!-- Zone de résultats -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-card">
+                    <h3><i class="fas fa-check-circle"></i> Analyse terminée</h3>
+                    
+                    <div class="file-info">
+                        <h4>Informations du fichier</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Fichier:</span>
+                                <span id="fileName">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Lignes:</span>
+                                <span id="fileRows">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Colonnes:</span>
+                                <span id="fileColumns">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns-info">
+                        <h4>Colonnes détectées</h4>
+                        <div id="columnsList" class="columns-list"></div>
+                    </div>
+
+                    <div class="rules-applied">
+                        <h4>Règles appliquées</h4>
+                        <div id="rulesList" class="rules-list"></div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="download-btn" id="downloadBtn">
+                            <i class="fas fa-download"></i>
+                            Télécharger le fichier traité
+                        </button>
+                        <button class="new-file-btn" id="newFileBtn">
+                            <i class="fas fa-plus"></i>
+                            Analyser un nouveau fichier
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Zone d'erreur -->
+            <section class="error-section" id="errorSection" style="display: none;">
+                <div class="error-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Erreur</h3>
+                    <p id="errorMessage">Une erreur s'est produite lors du traitement.</p>
+                    <button class="retry-btn" id="retryBtn">
+                        <i class="fas fa-redo"></i>
+                        Réessayer
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Logo en bas au-dessus du footer -->
+        <div class="bottom-logo">
+            <img src="favicon.ico" alt="Logo Bottom" class="logo-bottom">
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 Analyseur Excel - APP ❤️</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
