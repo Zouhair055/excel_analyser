@@ -155,15 +155,23 @@ function showResults(data) {
     currentProcessedFile = data.processed_file;
     
     // Remplir les informations
-    document.getElementById('fileName').textContent = data.original_file;
-    document.getElementById('fileRows').textContent = data.columns_info.shape[0];
-    document.getElementById('fileColumns').textContent = data.columns_info.shape[1];
+    document.getElementById('fileName').textContent = data.original_file || 'Fichier traité';
+    document.getElementById('fileRows').textContent = data.columns_info?.shape?.[0] || '-';
+    document.getElementById('fileColumns').textContent = data.columns_info?.shape?.[1] || '-';
+    
+    // ✅ Afficher les statistiques
+    document.getElementById('cellsFilled').textContent = data.statistics?.cells_filled || '0';
+    document.getElementById('improvement').textContent = `+${data.statistics?.improvement || 0}%`;
     
     // Afficher les colonnes
-    displayColumns(data.columns_info.columns, data.columns_info.empty_columns);
+    if (data.columns_info?.columns) {
+        displayColumns(data.columns_info.columns, data.columns_info.empty_columns || []);
+    }
     
     // Afficher les règles appliquées
-    displayRules(data.changes_applied.rules_applied);
+    const rulesApplied = data.changes_applied?.rules_applied || 
+                        [`${data.statistics?.rules_applied || 0} règles appliquées avec succès`];
+    displayRules(rulesApplied);
     
     // Garder le logo petit visible
     showTopLogo();

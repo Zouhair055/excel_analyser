@@ -2,24 +2,21 @@
 
 ## 🎯 Description
 
-L'Analyseur Excel est une application web qui permet d'uploader des fichiers Excel et d'appliquer automatiquement des règles de remplissage pour les colonnes vides. L'application détecte les colonnes, applique des règles prédéfinies et permet de télécharger le fichier traité.
+Application web simplifiée pour l'upload et le traitement automatique de fichiers Excel avec remplissage intelligent des colonnes vides.
 
 ## ✨ Fonctionnalités
 
-### 🔍 Détection Automatique
-- Analyse automatique des colonnes Excel
-- Identification des colonnes vides
-- Affichage des informations du fichier (nombre de lignes, colonnes)
-
-### 🤖 Règles de Traitement
-L'application applique automatiquement les régles
+### 🔍 Traitement Automatique
+- Upload de fichiers Excel (.xlsx, .xls)
+- Nettoyage et standardisation des colonnes
+- Application de règles de remplissage intelligentes
+- Formatage professionnel avec formatage conditionnel
 
 ### 🎨 Interface Utilisateur
-- Design moderne et responsive
-- Zone de drag & drop pour les fichiers
-- Barre de progression en temps réel
-- Affichage détaillé des résultats
+- Zone de drag & drop
+- Barre de progression
 - Téléchargement direct du fichier traité
+- Statistiques de traitement
 
 ## 🚀 Installation et Utilisation
 
@@ -29,31 +26,18 @@ L'application applique automatiquement les régles
 
 ### Installation
 ```bash
-# Cloner le projet
 cd excel-analyzer
-
-# Activer l'environnement virtuel
-source venv/bin/activate
-
-# Installer les dépendances
+source venv/bin/activate  # ou venv\Scripts\activate sur Windows
 pip install -r requirements.txt
 ```
 
 ### Lancement
 ```bash
-# Démarrer le serveur
 python src/main.py
-
-# L'application sera accessible sur http://localhost:5001
+# Accessible sur http://localhost:5001
 ```
 
-### Utilisation
-1. Ouvrir http://localhost:5001 dans votre navigateur
-2. Glisser-déposer votre fichier Excel ou cliquer pour parcourir
-3. Attendre le traitement automatique
-4. Télécharger le fichier traité
-
-## 🏗️ Architecture Technique
+## 🏗️ Architecture Simplifiée
 
 ### Backend (Flask)
 - **Framework** : Flask avec CORS
@@ -61,22 +45,38 @@ python src/main.py
 - **API REST** : 
   - `POST /api/excel/upload` - Upload et traitement
   - `GET /api/excel/download/<filename>` - Téléchargement
-  - `GET /api/excel/columns/<filename>` - Informations colonnes
-
-### Frontend
-- **Technologies** : HTML5, CSS3, JavaScript vanilla
-- **Design** : Responsive, animations CSS
-- **Interactions** : Drag & drop, AJAX
+  - `GET /api/excel/health` - État du service
 
 ### Structure du Projet
 ```
 excel-analyzer/
 ├── src/
-│   ├── main.py              # Point d'entrée Flask
+│   ├── main.py              # Point d'entrée Flask (simplifié)
 │   ├── routes/
-│   │   ├── excel.py         # API Excel
-│   │   └── user.py          # API utilisateur (template)
+│   │   ├── excel_clean.py   # API Excel (optimisé ~400 lignes)
+│   │   └── user.py          # API utilisateur (complété)
 │   ├── models/              # Modèles de données
+│   └── static/              # Frontend
+├── uploads/                 # Fichiers uploadés
+├── processed/               # Fichiers traités
+└── rules_*.json            # Fichiers de règles
+```
+
+## 📊 Améliorations Apportées
+
+- **Réduction drastique du code** : de 1800 à ~400 lignes
+- **Suppression des fonctions redondantes**
+- **Simplification du système de règles**
+- **Conservation des fonctionnalités essentielles**
+- **Amélioration de la lisibilité**
+
+## 🔒 Sécurité
+- Protection des colonnes financières
+- Validation des types de fichiers
+- Gestion d'erreurs robuste
+
+---
+Développé par Zouhair - Version optimisée
 │   ├── static/              # Frontend
 │   │   ├── index.html       # Interface principale
 │   │   ├── style.css        # Styles CSS

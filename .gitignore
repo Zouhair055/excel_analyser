@@ -42,3 +42,15 @@ rules_corrected_*.json
 # Système
 .DS_Store
 Thumbs.db
+
+# Fichiers Excel
+*.xlsx
+*.xls
+
+# Fichiers JSON de règles
+model_auto_remplissage/*.json
+rules_*.json
+
+# Données d'entraînement
+model_auto_remplissage/training_data*.xlsx
+model_auto_remplissage/ZZZ_*.xlsx

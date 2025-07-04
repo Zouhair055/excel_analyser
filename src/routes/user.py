@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request, jsonify
 from src.models.user import User, db
 
 user_bp = Blueprint('user', __name__)
@@ -10,7 +10,6 @@ def get_users():
 
 @user_bp.route('/users', methods=['POST'])
 def create_user():
-    
     data = request.json
     user = User(username=data['username'], email=data['email'])
     db.session.add(user)
@@ -36,4 +35,5 @@ def delete_user(user_id):
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
     db.session.commit()
+    return '', 204
     return '', 204
